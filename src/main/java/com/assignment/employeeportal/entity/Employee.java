@@ -7,8 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 /**
  * This is the entity class that holds employee details.
+ * 
  * @author Srividya
  *
  */
@@ -25,17 +27,11 @@ public class Employee {
 	@Column(name = "last_name")
 	String lastName;
 	@Column(name = "gender")
-	String gender;	
+	String gender;
 	@Column(name = "dob")
 	Date dob;
 	@Column(name = "department")
 	String department;
-
-	@Override
-	public String toString() {
-		return "Employee [empId=" + empId + ", firstName=" + firstName + ", lastName=" + lastName + ", gender=" + gender
-				+ ", dob=" + dob + ", department=" + department + "]";
-	}
 
 	public Employee() {
 	}
@@ -98,4 +94,9 @@ public class Employee {
 		this.department = department;
 	}
 
+	@Override
+	public String toString() {
+		return "Employee [empId=" + empId + ", firstName=" + firstName + ", lastName=" + lastName + ", gender=" + gender
+				+ ", dob=" + dob + ", department=" + department + "]";
+	}
 }

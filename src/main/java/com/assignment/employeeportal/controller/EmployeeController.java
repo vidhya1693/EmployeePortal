@@ -5,9 +5,9 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.assignment.employeeportal.entity.Employee;
@@ -29,22 +29,24 @@ public class EmployeeController {
 	@Autowired
 	EmployeeService employeeService;
 
-	@RequestMapping(value = "/employee", method = RequestMethod.POST)
+	@PostMapping(value = "/employee")
+	@ApiOperation("API to create Employee details")
 	public void saveEmployee(@RequestBody Employee emp) {
-		logger.debug("EmployeeController :: saveEmployee :: Method entry");
+		logger.trace("EmployeeController :: saveEmployee :: Method entry");
 		employeeService.saveEmployee(emp);
 		logger.info("Persisting Employee successful");
-		logger.debug("EmployeeController :: saveEmployee :: Method exit");
+		logger.trace("EmployeeController :: saveEmployee :: Method exit");
 	}
 
-	@RequestMapping(value = "/employee", method = RequestMethod.GET)
+	@GetMapping(value = "/employee")
+	@ApiOperation("API to get all the Employees detail")
 	public List<Employee> getAllEmployee() {
-		logger.debug("EmployeeController :: getAllEmployee :: Method entry");
+		logger.trace("EmployeeController :: getAllEmployee :: Method entry");
 
 		List<Employee> employee = employeeService.getAllEmployee();
 		logger.info("Retriving Employees successful : {0}", employee.toString());
 
-		logger.debug("EmployeeController :: getAllEmployee :: Method exit");
+		logger.trace("EmployeeController :: getAllEmployee :: Method exit");
 		return employee;
 	}
 
